@@ -1,5 +1,6 @@
 import json
 import logging
+import re
 from pathlib import Path
 
 from environs import Env
@@ -22,9 +23,14 @@ REASONS = tuple(
 
 SCOPES = ("app_mentions:read", "chat:write", "commands", "im:history")
 
-# A local SQLite file by default; postgresql+asyncpg://... in production
+# A local SQLite file by default; Postgres in production. Dokku and Heroku set DATABASE_URL to
+# postgres://..., so point SQLAlchemy at the asyncpg driver it needs for async.
 engine = create_async_engine(
-    env.str("DATABASE_URL", "sqlite+aiosqlite:///./db.sqlite3")
+    re.sub(
+        r"^postgres(ql)?://",
+        "postgresql+asyncpg://",
+        env.str("DATABASE_URL", "sqlite+aiosqlite:///./db.sqlite3"),
+    )
 )
 
 # Every workspace that installs the app gets its own bot token, stored here
