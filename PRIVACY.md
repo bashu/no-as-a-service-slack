@@ -40,11 +40,20 @@ troubleshooting, and are rotated regularly.
 
 Stored credentials are used only to send the app's replies through Slack's API. We don't sell,
 rent or share any data with third parties, and we don't use it for analytics or advertising.
+The only other company with access to stored data is the hosting provider listed under
+[Sub-processors](#sub-processors), and only to run the server.
 
 ## Where data is kept
 
-Data is stored on a server operated by the app's maintainer, in a database that isn't publicly
-accessible. All traffic between Slack and the app is encrypted with HTTPS.
+Data is stored on a virtual server rented from DigitalOcean in its Amsterdam (AMS3) data
+center, the Netherlands. The server is operated by the app's maintainer, and the database
+isn't publicly accessible. All traffic between Slack and the app is encrypted with HTTPS.
+
+## Sub-processors
+
+| Sub-processor | Purpose | Location |
+|---|---|---|
+| [DigitalOcean](https://www.digitalocean.com/legal/privacy-policy) | Hosts the server and database that store installation data | Amsterdam, the Netherlands (AMS3) |
 
 ## Deleting your data
 
