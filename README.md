@@ -8,9 +8,15 @@ creative way to say no. Or type `/no` to preview a reason only you can see, then
 to the channel, **Shuffle** for another one, or **Cancel**, like `/giphy`.
 
 ```
-you:  @No Bot can you cover my shift on Saturday?
+you:  @NO can you cover my shift on Saturday?
 bot:  In a different season of life, I might say yes—but not right now.
 ```
+
+## Add it to Slack
+
+[Add NO! to your workspace](https://no-as-a-service-slack.duckdns.org/slack/install).
+`/no` and DMs work right away. To mention the bot in a channel, invite it there first
+(`/invite @NO`).
 
 ## Self-hosting
 
@@ -53,7 +59,7 @@ It needs a public HTTPS URL, `https://<host>` below. For local development, use
 To let anyone install the bot, open **Manage Distribution** and activate public
 distribution, then share the `https://<host>/slack/install` link.
 
-Invite the bot to a channel (`/invite @No Bot`) before mentioning it there.
+Invite the bot to a channel (`/invite @NO`) before mentioning it there.
 
 ## Running
 
@@ -75,8 +81,12 @@ docker build -t no-as-a-service-slack .
 docker run --rm --env-file .env -p 3000:3000 no-as-a-service-slack
 ```
 
-On Heroku, the included `Procfile` runs the bot as a `web` dyno. Set `SLACK_SIGNING_SECRET`,
-`SLACK_CLIENT_ID`, `SLACK_CLIENT_SECRET` and `DATABASE_URL` in the app's config vars.
+On [Dokku](https://dokku.com/) or Heroku, the included `Procfile` runs the bot as a `web`
+process. Set `SLACK_SIGNING_SECRET`, `SLACK_CLIENT_ID` and `SLACK_CLIENT_SECRET` in the app's
+config, and link a Postgres database for `DATABASE_URL` (on Dokku, with the
+[dokku-postgres](https://github.com/dokku/dokku-postgres) plugin's `postgres:link`). The
+`postgres://` URLs they set work as is. For HTTPS on Dokku, use the
+[dokku-letsencrypt](https://github.com/dokku/dokku-letsencrypt) plugin.
 
 ## Customizing
 
