@@ -38,6 +38,7 @@ workspace is deleted right away. See the [privacy policy](PRIVACY.md) for detail
 ## Contact
 
 Report a bug, ask a question or request a feature by opening an issue at
-[github.com/bashu/no-as-a-service-slack/issues](https://github.com/bashu/no-as-a-service-slack/issues).
+[github.com/bashu/no-as-a-service-slack/issues](https://github.com/bashu/no-as-a-service-slack/issues),
+or email [basil.shubin@gmail.com](mailto:basil.shubin@gmail.com).
 Please include what you did, what you expected and what happened instead (screenshots help).
 Don't include tokens or other secrets.

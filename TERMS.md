@@ -61,5 +61,5 @@ use the app after that means you accept the new terms.
 
 ## Contact
 
-Questions about these terms: open an issue at
+Questions about these terms: email [basil.shubin@gmail.com](mailto:basil.shubin@gmail.com) or open an issue at
 [github.com/bashu/no-as-a-service-slack/issues](https://github.com/bashu/no-as-a-service-slack/issues).

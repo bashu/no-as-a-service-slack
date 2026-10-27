@@ -15,6 +15,8 @@ bot:  In a different season of life, I might say yes—but not right now.
 ## Add it to Slack
 
 [Add NO! to your workspace](https://no-as-a-service-slack.duckdns.org/slack/install).
+By installing it, you agree to the [terms of service](TERMS.md). See the
+[privacy policy](PRIVACY.md) for what the app stores, and [support](SUPPORT.md) if you need help.
 `/no` and DMs work right away. To mention the bot in a channel, invite it there first
 (`/invite @NO`).
 
