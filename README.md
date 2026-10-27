@@ -3,8 +3,9 @@
 Bot that gives you a reason to say no.
 
 A Slack bot inspired by [No-as-a-Service](https://github.com/hotheadhacker/no-as-a-service).
-Mention it in any channel it's been added to, send it a DM, or use the `/no` slash command,
-and it replies with a random, creative way to say no.
+Mention it in any channel it's been added to or send it a DM, and it replies with a random,
+creative way to say no. Or type `/no` to preview a reason only you can see, then **Send** it
+to the channel, **Shuffle** for another one, or **Cancel**, like `/giphy`.
 
 ```
 you:  @No Bot can you cover my shift on Saturday?
@@ -18,7 +19,9 @@ bot:  In a different season of life, I might say yes—but not right now.
    `connections:write` scope and copy it (`xapp-...`).
 3. Open **OAuth & Permissions** and add the bot token scopes `app_mentions:read`,
    `chat:write`, `commands` and `im:history` (needed to read DMs).
-4. Open **Slash Commands** and create `/no`.
+4. Open **Slash Commands** and create `/no`. Then open **Interactivity & Shortcuts** and turn
+   **Interactivity** on (needed for the Send, Shuffle and Cancel buttons). With Socket Mode,
+   neither needs a Request URL.
 5. Open **Event Subscriptions**, enable events and subscribe to the `app_mention` and
    `message.im` bot events.
 6. Open **App Home** and, under **Show Tabs**, enable the **Messages Tab** and check
@@ -63,10 +66,10 @@ and `SLACK_APP_TOKEN` in the app's config vars and scale the worker to one.
 
 Reasons live in `bot/reasons.json`, a plain JSON array of strings. Edit it and restart the bot.
 
-Listeners live in `bot/extensions/`, grouped by type (`commands/`, `events/`, `messages/`),
+Listeners live in `bot/extensions/`, grouped by type (`actions/`, `commands/`, `events/`, `messages/`),
 following the layout of the Slack CLI's Bolt templates. Each type is a package whose
 `__init__.py` has a `register(app)` function that wires its callbacks to the app. Every
-package there is registered on startup, so adding a new type (say, `actions/`) needs no other
+package there is registered on startup, so adding a new type (say, `views/`) needs no other
 changes. New slash commands also have to be created under **Slash Commands** in the app
 settings.
 
