@@ -14,4 +14,10 @@ dependencies = [
   "environs>=15.2",
   "slack-bolt>=1.30",
   "slack-sdk[optional]>=3.45",
+  "sqlalchemy[postgresql-asyncpg]>=2.1.6",
+]
+
+[dependency-groups]
+dev = [
+  "sqlalchemy[aiosqlite]>=2.1.6",
 ]

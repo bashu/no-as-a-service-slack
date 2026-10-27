@@ -1,19 +1,18 @@
-import asyncio
+from aiohttp import web
 
-from slack_bolt.adapter.socket_mode.async_handler import AsyncSocketModeHandler
-
-from bot import app, env
+from bot import app, env, installation_store, state_store
 from bot.extensions import register_extensions
 
 register_extensions(app)
 
 
-async def main() -> None:
-    handler = AsyncSocketModeHandler(app, env.str("SLACK_APP_TOKEN"))
-    try:
-        await handler.start_async()  # connects, then blocks until interrupted
-    finally:
-        await handler.close_async()  # "on stopping"
+async def on_startup(_: web.Application) -> None:
+    """Create the OAuth tables on first run; existing tables are left alone."""
+    await installation_store.create_tables()
+    await state_store.create_tables()
 
 
-asyncio.run(main())
+# Serves Slack's requests at /slack/events, plus /slack/install and /slack/oauth_redirect
+web_app = app.web_app()
+web_app.on_startup.append(on_startup)
+web.run_app(web_app, port=env.int("PORT", 3000))
